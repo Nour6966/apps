@@ -1,0 +1,69 @@
+#include <iostream>
+
+using namespace std;
+void uberx(int a,int x,string n){
+    float base_fare=2;
+    float per_minutes=.22*a;
+    float permile=1.15*x;
+    float minfare=6.55;
+    float total=base_fare+per_minutes+permile+minfare;
+    cout<<"rider's name: "<<n<<endl;
+    cout<<"total : "<<total;
+}
+void suv(int a,int x,string n){
+    float base_fare=15;
+    float per_minutes=.9*a;
+    float permile=3.75*x;
+    float minfare=25;
+    float total=base_fare+per_minutes+permile+minfare;
+    cout<<"rider's name: "<<n<<endl;
+    cout<<"total : "<<total;
+}
+void luxury(int a,int x,string n){
+    float base_fare=5;
+    float per_minutes=.5*a;
+    float permile=2.75*x;
+    float minfare=10.55;
+     float total=base_fare+per_minutes+permile+minfare;
+    cout<<"rider's name: "<<n<<endl;
+    cout<<"total : "<<total;
+}
+
+int main()
+{
+   int l_m,d_mi,m;
+   string name ;
+   float surge_value;
+   char choice;
+   bool surge ;
+   cout<< " welcome to  Uber Application "<<endl;
+   cout <<"enter name: ";
+   cin>>name;
+   cout<<"enter time in minutes:";
+   cin>>m;
+   cout<<"enter the distance of ride in miles: ";
+   cin>>d_mi;
+   cout<<"enter 'x' for Uberx or 's' for SUV or 'l' for luxury: ";
+   cin>>choice;
+   cout<<"enter'1' if surge or '0' if not: " ;
+   cin>>surge;
+   if(surge==true){
+       cout<<"enter the surge value: ";
+       cin>>surge_value;
+       d_mi=surge_value*d_mi;
+   }
+   else{
+       d_mi=d_mi*1;
+   }
+
+   switch(choice){
+       case 'x':uberx(m,d_mi,name);
+       break;
+       case 's': suv(m,d_mi,name);
+       break;
+       case'l':luxury(m,d_mi,name);
+       break;
+  }
+
+return 0;
+}
