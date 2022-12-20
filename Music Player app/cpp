@@ -1,0 +1,32 @@
+#include <iostream>
+#include<vector>
+
+using namespace std;
+
+
+int main()
+{
+    string list;
+  vector<string>songs;
+
+
+     do{
+
+ cout<<" hello! please enter your songs for this play list (when done say 'quit')"<<endl;
+
+  getline(cin,list);
+  songs.push_back(list);
+        } while (list != "quit");
+        songs.pop_back();
+        cout <<" you have many songs in your play list:"<<songs.size()<<endl;
+        for (int i=0; i<songs.size();i++){
+            cout<<i+1<<"."<<songs[i]<<endl;
+        }
+
+
+
+
+
+
+  return 0;
+}
