@@ -1,89 +1,126 @@
 #include <iostream>
-
 using namespace std;
 
-//making class bank
-class Bank{
+// class
+class Bank {
+private:
+    int acno;
+    char name[30];
+    long balance;
 
 public:
-    string name;
-    int balance ;
-    int Account_number ;
-
-Bank(string n,int b,long long an){
-    name=n;
-    balance=b;
-    Account_number=an;
-}
-//func to check balance
-void checkBalance(){
-    cout<<"Your balance is :"<<balance<<endl;    
-}
-
-//func to check accounting_number
-string accounting_number (int Account_number){
-    if (Account_number){
-    cout<<" welcome back "<<name<<endl;    
-}else{
-    cout <<"the account is not exitit";
-    return 0;
-}}
-//func to checck withdraw
-void withdraw(int money){
-balance=balance-money;
-    cout<<"your balance is "<<balance;
-}
-
-
-//func to compute deposite
-void deposite(int money){
-  balance=balance+money; 
-  cout<<"your balance is  "<<balance ;
-}
-
+    void OpenAccount()
+    {
+        cout <<" create  2 accounts   "<<endl<<endl;
+        cout << "Enter Account Number: ";
+        cin >> acno;
+        cout << "Enter Name: ";
+        cin >> name;
+        cout << "Enter  Balance: ";
+        cin >> balance;
+    }
+    void ShowAccount()
+    {
+        cout << "Account Number: " << acno << endl;
+        cout << "Name: " << name << endl;
+        cout << "Balance: " << balance << endl;
+    }
+    void Deposit()
+    {
+        long amt;
+        cout << "Enter Amount U want to deposit? ";
+        cin >> amt;
+        balance = balance + amt;
+    }
+    void Withdrawal()
+    {
+        long amt;
+        cout << "Enter Amount U want to withdraw? ";
+        cin >> amt;
+        if (amt <= balance)
+            balance = balance - amt;
+        else
+            cout << "Less Balance..." << endl;
+    }
+    int Search(int);
 };
-string create_account ();
 
+int Bank::Search(int a)
+{
+    if (acno == a) {
+        ShowAccount();
+        return (1);
+    }
+    return (0);
+}
 
-int main(){
+// main code
+int main()
+{
+    Bank C[3];
 
-int n,v;
+    int found = 0, a, ch, i;
+    for (i = 0; i <= 1; i++) {
+        C[i].OpenAccount();
+    }
 
+    do {
+        // display options
+        cout << "\n\n1:show All\n2:to-get-your-data-enter-account-number  \n3:Deposit\n4:Withdraw\n5:Exit" << endl;
 
-string name ;
-int ac_n,b,money,b_d;
+        // user input
+        cout << "Please input your choice: ";
+        cin >> ch;
 
-
-cout <<"enter name :";
-cin >>name;
-cout <<"enter account_number:";
-cin>>ac_n;
-cout <<"entre balance :";
-cin>>b;
-cout<<"Select option "<<endl;
- cout<<"1 Deposit"<<endl;
- cout<<"2 Withdraw"<<endl;
- cout<<"3 show Balance "<<endl;
- cout<<"Enter your choice: "<<endl; 
-cin>>n;
-
-
-Bank a1=Bank(name,b,ac_n);
- a1.accounting_number(v);
-        switch(n){
-        case 1 :
-        cout<<"enter the amount "<<endl;
-        cin>>money;
-        a1.deposite(money);
-        break;
-        
-        case 2:cout<<"enter money"<<endl;
-        cin>>money;
-        a1.withdraw(money);
-        break;
-        case 3:
-        a1.checkBalance();
-        break;
-       
-        
-    }}
+        switch (ch) {
+        case 1: // displating account info
+            for (i = 0; i <= 1; i++) {
+                C[i].ShowAccount();
+            }
+            break;
+        case 2: // searching the record
+            cout << "Account Number? ";
+            cin >> a;
+            for (i = 0; i <= 1; i++) {
+                found = C[i].Search(a);
+                if (found)
+                    break;
+            }
+            if (!found)
+                cout << "this account is not exist try again " << endl;
+            break;
+        case 3: // deposit operation
+            cout << " enter your Account Number To Deposit Amount : ";
+            cin >> a;
+            for (i = 0; i <= 1; i++) {
+                found = C[i].Search(a);
+                if (found) {
+                    C[i].Deposit();
+                    break;
+                }
+            }
+            if (!found)
+                cout << "Record Not Found" << endl;
+            break;
+        case 4: // withdraw operation
+            cout << " enter your Account Number To Withdraw Amount: ";
+            cin >> a;
+            for (i = 0; i <= 1; i++) {
+                found = C[i].Search(a);
+                if (found) {
+                    C[i].Withdrawal();
+                    break;
+                }
+            }
+            if (!found)
+                cout << "Record Not Found" << endl;
+            break;
+        case 5: // exit
+            cout << "Have a nice day" << endl;
+            break;
+        default:
+            cout << "Wrong Option" << endl;
+        }
+    } while (ch != 5);
+    return 0;
+}
