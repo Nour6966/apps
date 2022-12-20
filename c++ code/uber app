@@ -36,7 +36,8 @@ int main()
    float surge_value;
    char choice;
    bool surge ;
-   cout<< " welcome to  Uber Application "<<endl;
+   cout<< " welcome to Uber App"<<endl;
+   cout<<"*********************"<<endl;
    cout <<"enter name: ";
    cin>>name;
    cout<<"enter time in minutes:";
