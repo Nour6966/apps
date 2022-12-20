@@ -28,19 +28,20 @@ public:
     void Deposit()
     {
         long amt;
-        cout << "Enter Amount U want to deposit? ";
+        cout << "Enter Amount U want to deposit: ";
         cin >> amt;
         balance = balance + amt;
     }
     void Withdrawal()
     {
         long amt;
-        cout << "Enter Amount U want to withdraw? ";
+        cout << "Enter Amount U want to withdraw  ";
         cin >> amt;
         if (amt <= balance)
             balance = balance - amt;
+
         else
-            cout << "Less Balance..." << endl;
+            cout << "try again with Amount not higher than your balance !!" << endl<<endl;
     }
     int Search(int);
 };
@@ -66,10 +67,10 @@ int main()
 
     do {
         // display options
-        cout << "\n\n1:show All\n2:to-get-your-data-enter-account-number  \n3:Deposit\n4:Withdraw\n5:Exit" << endl;
+        cout << "\n\n1:show All\n2:to-get-your-data-enter-account-number \n3:Deposit\n4:Withdraw\n5:Exit" << endl;
 
         // user input
-        cout << "Please input your choice: ";
+        cout << "enter choice: ";
         cin >> ch;
 
         switch (ch) {
@@ -124,3 +125,4 @@ int main()
     } while (ch != 5);
     return 0;
 }
+
