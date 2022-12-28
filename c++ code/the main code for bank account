@@ -1,0 +1,82 @@
+#include <iostream>
+
+using namespace std;
+
+class account {
+
+private:
+    int accountNumber;
+    string name;
+    int balance;
+public:
+    void setAccountNumber(int n){
+    accountNumber=n;
+    }
+int getaccountNumber(){
+return accountNumber;
+}
+void setBalance(int b){
+balance=b;
+}
+int getBalance(){
+return balance;
+}
+void setName(string na){
+name=na;
+}
+string getName(){
+return name;
+}
+// fun for withdraw
+void withdraw(float num){
+balance=balance-num;
+}
+//fun for deposit
+void deposit(float num){
+balance=balance+num;
+}
+
+};
+
+
+int main()
+{
+    account user1;
+    user1.setName(" Nour");
+    user1.setAccountNumber(2);
+    user1.setBalance(1000);
+
+      char op;
+      int num;
+      if (user1.getaccountNumber()==2){
+        cout<<"welcome"<<user1.getName()<<" to our bank"<<endl;
+        while(true){
+          cout<<"enter operation:"<<endl;
+           cout<<"for withdraw enter W for depost enter 'D'"<<endl;
+            cout<<"check  balance 'b'"<<endl;
+            cin>>op;
+        switch (op)
+        {
+        case 'w':
+        cout<< "enter the amount:";
+        cin>>num;
+        if(user1.getBalance()>num){
+            user1.withdraw(num);
+        }
+        break;
+         case 'd':
+       cout<< "enter the amount:";
+        cin>>num;
+       user1.deposit(num);
+        break;
+            case 'b':
+        cout<< "your balance is :"<<user1.getBalance()<<endl;
+        break;
+        }
+     }
+}else {
+        cout<< " wrong acc "<<endl;
+      }
+
+    return 0;
+}
